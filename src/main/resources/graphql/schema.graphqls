@@ -1,0 +1,72 @@
+#Types
+type UserMaster {
+    id: ID! 
+    emailId: String!
+    password: String! 
+}
+
+type AuthResponse {
+    token: String!
+    user: UserMaster!
+} 
+
+type HospitalMaster {
+    id: ID!
+    name: String!
+    location: String!
+    contactNumber: String!
+    email: String!
+}
+
+
+
+# ============================
+# Input Types
+# ============================
+ 
+input LoginInput {
+    companyId:String!    
+    password: String!
+}
+
+input UserMasterInput {  
+    emailId: String!
+    password: String! 
+}
+
+input HospitalMasterInput {
+    name: String!
+    location: String!
+    contactNumber: String!
+    email: String!
+}
+
+
+
+
+# ============================
+# Queries
+# ============================
+
+type Query { 
+    findAllUsers: [UserMaster!]!
+    findUserById(id: ID!): UserMaster
+    getAllHospitals: [HospitalMaster!]!
+    getHospitalById(id: ID!): HospitalMaster
+}
+
+# ============================
+# Mutations
+# ============================
+
+
+type Mutation {
+    login(input: LoginInput!): AuthResponse! 
+    createUser(input: UserMasterInput!): UserMaster!
+    updateUser(id: ID!, input: UserMasterInput!): UserMaster!
+    deleteUser(id: ID!): Boolean!
+    createHospital(input: HospitalMasterInput!): HospitalMaster!
+    updateHospital(id: ID!, input: HospitalMasterInput!): HospitalMaster!
+    deleteHospital(id: ID!): Boolean!
+}
+
