@@ -18,6 +18,46 @@ type HospitalMaster {
     email: String!
 }
 
+type CategoryMaster {
+    id: ID!
+    categoryName: String!
+}
+
+type ProcedureMaster {
+    id: ID!
+    name: String!
+    description: String!
+}
+
+type SubscriptionMaster {
+    id: ID!
+    planName: String!
+    description: String
+    price: Float!
+    duration: String! 
+}
+
+type PrivacyPolicyMaster {
+    id: ID!
+    title: String!
+    content: String
+}
+
+
+type FAQMaster {
+    id: ID!
+    question: String!
+    answer: String! 
+}
+
+type ContactUsMaster {
+    id: ID!
+    name: String!
+    email: String! 
+    message: String 
+}
+
+
 
 
 # ============================
@@ -41,6 +81,40 @@ input HospitalMasterInput {
     email: String!
 }
 
+input CategoryMasterInput {
+   categoryName: String!
+}
+
+input ProcedureMasterInput {
+   name: String!
+   description: String!
+}
+
+input SubscriptionMasterInput{
+    planName: String!
+    description: String
+    price: Float!
+    duration: String! 
+}
+
+input PrivacyPolicyMasterInput {
+    title: String!
+    content: String
+}
+
+
+input FAQMasterInput{
+    question: String!
+    answer: String 
+}
+
+
+input ContactUsMasterInput{
+    name: String!
+    email: String 
+    message: String! 
+}
+
 
 
 
@@ -51,8 +125,32 @@ input HospitalMasterInput {
 type Query { 
     findAllUsers: [UserMaster!]!
     findUserById(id: ID!): UserMaster
+    
+    #hospitals
     getAllHospitals: [HospitalMaster!]!
     getHospitalById(id: ID!): HospitalMaster
+    
+    #procedure category
+    getAllCategories: [CategoryMaster]
+    getCategoryById(id: ID!): CategoryMaster
+    
+    #procedure
+    getAllProcedures: [ProcedureMaster]
+    getProcedureById(id: ID!): ProcedureMaster
+    
+    #subscriptions
+    getAllSubscriptions: [SubscriptionMaster]
+    getSubscriptionById(id: ID!): SubscriptionMaster
+    
+    #privacypolicy
+    getPrivacyPolicy: [PrivacyPolicyMaster]
+   
+    #Faqs
+    getAllFAQs: [FAQMaster]
+   
+    #contactus
+    getContactDetails: [ContactUsMaster]
+    
 }
 
 # ============================
@@ -65,8 +163,39 @@ type Mutation {
     createUser(input: UserMasterInput!): UserMaster!
     updateUser(id: ID!, input: UserMasterInput!): UserMaster!
     deleteUser(id: ID!): Boolean!
+    
+    #hospitals
     createHospital(input: HospitalMasterInput!): HospitalMaster!
     updateHospital(id: ID!, input: HospitalMasterInput!): HospitalMaster!
     deleteHospital(id: ID!): Boolean!
+    
+    #procedure category
+    createCategory(input: CategoryMasterInput!): CategoryMaster
+    updateCategory(id: ID!, input: CategoryMasterInput!): CategoryMaster
+    deleteCategory(id: ID!): Boolean
+    
+    #procedures
+    createProcedure(input: ProcedureMasterInput!): ProcedureMaster
+    updateProcedure(id: ID!, input: ProcedureMasterInput!): ProcedureMaster
+    deleteProcedure(id: ID!): Boolean
+    
+    #subscriptions
+    createSubscription(input: SubscriptionMasterInput!): SubscriptionMaster
+    updateSubscription(id: ID!, input: SubscriptionMasterInput!): SubscriptionMaster
+    deleteSubscription(id: ID!): Boolean
+    
+    #privacypolicy
+    createPrivacyPolicy(input: PrivacyPolicyMasterInput!): PrivacyPolicyMaster
+    updatePrivacyPolicy(id: ID!, input: PrivacyPolicyMasterInput!): PrivacyPolicyMaster 
+    
+    
+    #faqs
+    createFAQ(input: FAQMasterInput!): FAQMaster
+    updateFAQ(id: ID!, input: FAQMasterInput!): FAQMaster
+    deleteFAQ(id: ID!): Boolean
+    
+    
+    #contactus
+    createContactUs(input: ContactUsMasterInput!): ContactUsMaster 
 }
 

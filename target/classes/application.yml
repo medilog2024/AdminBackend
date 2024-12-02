@@ -18,7 +18,7 @@ spring:
   graphql:
     graphiql:
       enabled: true
-      path: /graphiql
+      path: /medibankAdmin
 
 jwt:
   secret: empover
